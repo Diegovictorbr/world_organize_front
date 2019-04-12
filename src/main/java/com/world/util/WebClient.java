@@ -6,7 +6,6 @@ import java.net.HttpURLConnection;
 import java.net.Proxy;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
-import okhttp3.Credentials;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -21,16 +20,8 @@ public class WebClient {
     private static WebClient webClient;
 
     private WebClient() {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-
-        if (Configurator.getInstance().useProxy())
-            CodeUtils.setProxy();
-        else {
-            builder.proxy(Proxy.NO_PROXY);
-            CodeUtils.removeProxy();
-        }
-
-        httpClient = builder
+        httpClient = new OkHttpClient.Builder()
+                .proxy(Proxy.NO_PROXY)
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
@@ -42,19 +33,8 @@ public class WebClient {
     }
 
     public String doGet(String url) throws IOException {
-        Request httpRequest = new Request.Builder()
-                .header("Proxy-Authorization", Credentials.basic(Configurator.getInstance().getProxyUser(), Configurator.getInstance().getProxyPassword()))
-                .url(url).build();
+        Request httpRequest = new Request.Builder().url(url).build();
         Response httpResponse = httpClient.newCall(httpRequest).execute();
-
-        if (httpResponse.code() != 200) {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("success", false);
-            jsonObject.put("msg", httpResponse.body().string());
-            jsonObject.put("httpCode", httpResponse.code());
-            return jsonObject.toString();
-        }
-
         return httpResponse.body().string();
     }
 

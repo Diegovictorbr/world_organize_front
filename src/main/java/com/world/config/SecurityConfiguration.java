@@ -15,6 +15,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilterBefore(new CustomFilter(), ChannelProcessingFilter.class);
         http.csrf().disable();
+        http.authorizeRequests()
+                .antMatchers("/**").permitAll();
     }
 
     @Override
