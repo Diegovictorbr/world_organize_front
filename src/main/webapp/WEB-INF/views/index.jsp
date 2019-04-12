@@ -92,7 +92,7 @@
 
                 var overlay = new ol.Overlay({
                     element: overlayElement,
-                    positioning: 'center'
+                    positioning: 'center-right'
                 });
 
                 overlay.setPosition(event.coordinate);
@@ -183,8 +183,8 @@
                                         }),
                                         image: new ol.style.Circle({
                                             // O raio é proporcional à quantidade de informações na categoria
-                                            radius: bairro.count / 10,
-                                            fill: new ol.style.Fill({color: 'rgba(255, 0, 0, 1)'}),
+                                            radius: bairro.count / 8,
+                                            fill: new ol.style.Fill({color: 'rgba(255, 0, 0, 0.7)'}),
                                             stroke: new ol.style.Stroke({
                                                 color: 'rgba(255, 0, 0, 1)',
                                                 width: 2
@@ -193,7 +193,7 @@
                                     }));
 
                                     vectorSource.addFeature(bairroPointFeature);
-                                    bairroPointFeature.set('bairro', bairro.bairro);
+                                    bairroPointFeature.set('bairro', '<b>' + bairro.bairro + '<br> ' + bairro.count + ' Notícias registradas</b>' );
                                 });
 
                                 map.getView().fit(vectorSource.getExtent(), {duration: 500, maxZoom: 16});
