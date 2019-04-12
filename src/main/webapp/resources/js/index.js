@@ -47,20 +47,13 @@ $(document).ready(() => {
         }
     });
 
+   
     
-    
-    // TODO: requisição inicial para pegar categorias e criar tags ul
-    $.ajax({
-        url: 'https://7lxc3x2ta7.execute-api.us-east-1.amazonaws.com/Prod/listcategory',
-        success: function (response, aa, bb) {
-            console.log('success');
-            // Categorias da aplicação
-            res = response;
-            a = aa;
-            b = bb;
-            // response.forEach(element => $('#categories').append("<li><a href='#'>" + element.name + "</a></li>"));
-        }
-    });
+    <!-- <ul>
+            <li><a href="#">ViolÃªncia</a></li>
+            <li><a href="#">Assalto</a></li>
+            <li><a href="#">Tiroteio</a></li>
+        </ul> -->
 
     // Pegar tweet pelo id de uma localidade
     // https://7lxc3x2ta7.execute-api.us-east-1.amazonaws.com/Prod/gettweetbylocate?id=3

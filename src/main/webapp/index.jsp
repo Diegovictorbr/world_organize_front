@@ -1,41 +1,18 @@
-<!DOCTYPE html>
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Tweets Classifier</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="resources/js/font-awesome-all.js"></script>
-    <script src="resources/js/jquery-3.3.1.min.js"></script>
-    <script src="resources/js/ol.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="resources/css/ol.css">
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="resources/css/index.css">
-    <script src="resources/js/index.js"></script>
-</head>
-
-<body>
+<tags:pageTemplate titulo="World Organize">
     <nav id="menu" style="background: url('resources/images/bg1.png')">
         <a href="#" id="closeSlideRef">
             <i class="fas fa-times"></i>
         </a>
-
-        <!-- <ul>
-            <li><a href="#">Violência</a></li>
-            <li><a href="#">Assalto</a></li>
-            <li><a href="#">Tiroteio</a></li>
-        </ul> -->
 
         <!-- TODO: logo circular da aplicação -->
         <div style="width: 100%; height: 100; background: url('resources/images/bg1.png')">
             <div id="header" class="text-center">
                 <div>
                     <img class="rounded-circle" src="resources/images/profile.jpg" alt="User picture"
-                        style="width: 150px; height: auto; border: 4px solid dimgray">
+                         style="width: 150px; height: auto; border: 4px solid dimgray">
                     <br>
                     <h3 style="margin-top: 5%;color: dimgray;font-weight: bolder">World Organize</h3>
                     <hr style="border: none; height: 1px; color: dimgray; background-color: dimgray">
@@ -43,7 +20,7 @@
             </div>
 
             <div id='cssmenu'>
-                
+
                 <ul>
                     <li><a href='#'>Home</a></li>
 
@@ -61,6 +38,5 @@
         <input id="filterBtn" type="image" src="resources/images/menu.png" />
         <div id="mapContainer"></div>
     </div>
-</body>
 
-</html>
+</tags:pageTemplate>
